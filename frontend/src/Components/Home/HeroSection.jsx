@@ -1,116 +1,30 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import { FaCamera, FaHeadphonesAlt, FaSitemap, FaPlay } from 'react-icons/fa';
+import { IoIosPhonePortrait, IoMdWatch } from 'react-icons/io';
+import { MdLaptopChromebook } from 'react-icons/md';
 
 const slides = [
   {
     id: 1,
-    title: 'Upgrade your tech lifestyle',
-    subtitle: 'Exclusive premium smartwatches & modern audio gadgets.',
-    badge: 'Special offer — up to 50% off',
-    ctaText: 'Shop tech now',
+    title: 'Upgrade Your Tech Lifestyle',
+    subtitle: 'Discover the latest gadgets with unbeatable deals and best quality.',
+    badge: 'New Collection 2026',
+    ctaText: 'Shop Now',
     ctaLink: '#tech',
-    bgImage: 'https://i.ibb.co.com/DfNWwrSB/Gemini-Generated-Image-af3oyaaf3oyaaf3o.jpg',
+    bgImage: 'https://i.ibb.co.com/Ps0KwjQT/Chat-GPT-Image-Aug-31-2026-08-38-32-PM.png',
   },
   {
     id: 2,
-    title: 'Trending fashion collections',
+    title: 'Trending Fashion Collections',
     subtitle: 'Discover the latest urban wear & style trends for this season.',
-    badge: 'New arrival 2026',
-    ctaText: 'Explore collection',
+    badge: 'New Arrival 2026',
+    ctaText: 'Explore Collection',
     ctaLink: '#fashion',
-    bgImage: 'https://i.ibb.co.com/q3nJW7D3/Gemini-Generated-Image-7y9ve77y9ve77y9v.jpg',
-  },
-  {
-    id: 3,
-    title: 'Premium sound experience',
-    subtitle: 'Wireless noise-canceling headphones with high-fidelity audio.',
-    badge: 'Flash sale',
-    ctaText: 'Grab yours today',
-    ctaLink: '#audio',
-    bgImage: 'https://i.ibb.co.com/LdWcTCGJ/957f62ad-a1ad-40e3-a2f6-1aa37ac5033f.webp',
-  },
-  {
-    id: 4,
-    title: 'Premium sound experience',
-    subtitle: 'Wireless noise-canceling headphones with high-fidelity audio.',
-    badge: 'Flash sale',
-    ctaText: 'Grab yours today',
-    ctaLink: '#audio',
-    bgImage:
-      'https://img.lazcdn.com/us/domino/f0fdb016-209c-4ecf-943f-5ed63815ae4b_BD-1976-688.jpg_2200x2200q80.jpg',
-  },
-  {
-    id: 5,
-    title: 'Premium sound experience',
-    subtitle: 'Wireless noise-canceling headphones with high-fidelity audio.',
-    badge: 'Flash sale',
-    ctaText: 'Grab yours today',
-    ctaLink: '#audio',
-    bgImage:
-      'https://img.lazcdn.com/us/domino/92f08866-ea0b-4ac0-8fd2-445134ca467a_BD-1976-688.jpg_2200x2200q80.jpg_.avif',
-  },
-  {
-    id: 6,
-    title: 'Premium sound experience',
-    subtitle: 'Wireless noise-canceling headphones with high-fidelity audio.',
-    badge: 'Flash sale',
-    ctaText: 'Grab yours today',
-    ctaLink: '#audio',
-    bgImage:
-      'https://img.lazcdn.com/us/domino/b3493235-f9a8-45ae-85cd-1f81aa574357_BD-1976-688.jpg_2200x2200q80.jpg_.avif',
-  },
-  {
-    id: 7,
-    title: 'Premium sound experience',
-    subtitle: 'Wireless noise-canceling headphones with high-fidelity audio.',
-    badge: 'Flash sale',
-    ctaText: 'Grab yours today',
-    ctaLink: '#audio',
-    bgImage:
-      'https://img.lazcdn.com/us/domino/b3493235-f9a8-45ae-85cd-1f81aa574357_BD-1976-688.jpg_2200x2200q80.jpg_.avif',
-  },
-  {
-    id: 8,
-    title: 'Premium sound experience',
-    subtitle: 'Wireless noise-canceling headphones with high-fidelity audio.',
-    badge: 'Flash sale',
-    ctaText: 'Grab yours today',
-    ctaLink: '#audio',
-    bgImage:
-      'https://img.lazcdn.com/us/domino/8520bdb8-71f4-4377-8856-9bfd0024fe40_BD-1976-688.jpg_2200x2200q80.jpg_.avif',
-  },
-  {
-    id: 9,
-    title: 'Premium sound experience',
-    subtitle: 'Wireless noise-canceling headphones with high-fidelity audio.',
-    badge: 'Flash sale',
-    ctaText: 'Grab yours today',
-    ctaLink: '#audio',
-    bgImage:
-      'https://img.lazcdn.com/us/domino/22ef2c64-2907-4c6e-9d4d-0ab37d54250f_BD-1976-688.jpg_2200x2200q80.jpg_.avif',
-  },
-  {
-    id: 10,
-    title: 'Premium sound experience',
-    subtitle: 'Wireless noise-canceling headphones with high-fidelity audio.',
-    badge: 'Flash sale',
-    ctaText: 'Grab yours today',
-    ctaLink: '#audio',
-    bgImage:
-      'https://img.lazcdn.com/us/domino/234795cb-0fb8-4d0e-a05a-34f3cc98ee92_BD-1976-688.jpg_2200x2200q80.jpg_.avif',
+    bgImage: 'https://i.ibb.co.com/Ps0KwjQT/Chat-GPT-Image-Aug-31-2026-08-38-32-PM.png',
   },
 ];
 
 const SLIDE_DURATION = 5000;
-
-// --- design tokens -----------------------------------------------------
-// bg ink   #0A0F14   deep, near-black navy — lets product photography read as premium
-// panel    #10161D   slightly lifted surface for controls
-// text     #F3F6F8   warm-white
-// muted    #93A1AC   secondary copy
-// accent   #2DD4BF   single signature teal, used sparingly (CTA, active states)
-// display  'Space Grotesk' — geometric, confident, for headlines
-// body     'Inter'   — for everything else
-// -------------------------------------------------------------------------
 
 const useGoogleFonts = () => {
   useEffect(() => {
@@ -155,14 +69,12 @@ const HeroSection = () => {
   const nextSlide = useCallback(() => goTo(currentSlide + 1), [currentSlide, goTo]);
   const prevSlide = useCallback(() => goTo(currentSlide - 1), [currentSlide, goTo]);
 
-  // Autoplay
   useEffect(() => {
     if (paused || reducedMotion) return;
     const interval = setInterval(nextSlide, SLIDE_DURATION);
     return () => clearInterval(interval);
   }, [paused, reducedMotion, nextSlide]);
 
-  // Keyboard navigation
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'ArrowRight') nextSlide();
@@ -172,7 +84,6 @@ const HeroSection = () => {
     return () => window.removeEventListener('keydown', onKey);
   }, [nextSlide, prevSlide]);
 
-  // Touch / swipe
   const onTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
   };
@@ -186,157 +97,179 @@ const HeroSection = () => {
   const slide = slides[currentSlide];
 
   return (
-    <section
-      className="relative w-full mx-auto h-[520px] sm:h-[580px] lg:h-[640px] overflow-hidden bg-[#0A0F14]"
-      style={{ fontFamily: "'Inter', ui-sans-serif, system-ui" }}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
-      onTouchStart={onTouchStart}
-      onTouchEnd={onTouchEnd}
-      role="region"
-      aria-roledescription="carousel"
-      aria-label="Featured offers"
-    >
-      {/* Slides */}
-      {slides.map((s, index) => {
-        const isActive = index === currentSlide;
-        return (
-          <div
-            key={s.id}
-            className={`absolute inset-0 transition-opacity duration-700 ease-out ${
-              isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-            }`}
-            aria-hidden={!isActive}
-          >
+    <div className="bg-gray-100">
+      <section
+        className="relative w-full bg-[#0A0F14] pb-24 pt-12 lg:pt-20 px-4 sm:px-8"
+        style={{ fontFamily: "'Inter', ui-sans-serif, system-ui" }}
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+        onTouchStart={onTouchStart}
+        onTouchEnd={onTouchEnd}
+        role="region"
+        aria-label="Featured offers"
+      >
+        {/* Background Slides */}
+        {slides.map((s, index) => {
+          const isActive = index === currentSlide;
+          return (
             <div
-              className="absolute inset-0 bg-cover bg-center"
-              style={{
-                backgroundImage: `url('${s.bgImage}')`,
-                transform: isActive && !reducedMotion ? 'scale(1.06)' : 'scale(1)',
-                transition: 'transform 6500ms ease-out',
-              }}
+              key={s.id}
+              className={`absolute inset-0 transition-opacity duration-700 ease-out ${
+                isActive ? 'opacity-100 z-0' : 'opacity-0 z-0 pointer-events-none'
+              }`}
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-[#0A0F14] via-[#0A0F14]/85 to-[#0A0F14]/40 sm:to-[#0A0F14]/25" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0A0F14]/70 via-transparent to-transparent" />
+              <div
+                className="absolute inset-0 bg-cover bg-center"
+                style={{
+                  backgroundImage: `url('${s.bgImage}')`,
+                  transform: isActive && !reducedMotion ? 'scale(1.04)' : 'scale(1)',
+                  transition: 'transform 6500ms ease-out',
+                }}
+              />
+            </div>
+          );
+        })}
+
+        {/* Hero Content Container */}
+        <div className="max-w-7xl mx-auto min-h-[420px] sm:min-h-[480px] flex items-center relative z-20">
+          <div className="max-w-xl text-white">
+            <span
+              key={`badge-${slide.id}`}
+              className="inline-block bg-[#805AD5]/30 text-lime-400 border border-lime-400/30 text-xs font-semibold px-3 py-1.5 rounded-full mb-6 animate-[fadeIn_0.6s_ease-out]"
+            >
+              {slide.badge}
+            </span>
+
+            <h1
+              key={`title-${slide.id}`}
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight mb-4 animate-[fadeIn_0.6s_ease-out]"
+              style={{ fontFamily: "'Space Grotesk', ui-sans-serif, system-ui" }}
+            >
+              {slide.title.split('Tech')[0]}
+              {slide.title.includes('Tech') && <span className="text-lime-400">Tech </span>}
+              {slide.title.split('Tech')[1]}
+            </h1>
+
+            <p
+              key={`subtitle-${slide.id}`}
+              className="text-gray-300 text-base sm:text-lg mb-8 max-w-md animate-[fadeIn_0.6s_ease-out]"
+            >
+              {slide.subtitle}
+            </p>
+
+            <div className="flex items-center gap-4">
+              <a
+                href={slide.ctaLink}
+                className="inline-flex items-center justify-center bg-lime-400 hover:bg-lime-500 text-black font-bold px-7 py-3 rounded-xl transition-all shadow-lg"
+              >
+                {slide.ctaText}
+              </a>
+              <button className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-medium px-5 py-3 rounded-xl backdrop-blur-md transition-all">
+                <FaPlay className="text-xs" /> Play Video
+              </button>
             </div>
           </div>
-        );
-      })}
-
-      {/* Content */}
-      <div className="max-w-7xl mx-auto h-full px-6 sm:px-8 lg:px-12 flex items-center relative z-20">
-        <div className="max-w-xl">
-          <div
-            key={`badge-${slide.id}`}
-            className="inline-flex items-center gap-2 text-brand-green text-sm font-medium mb-5 animate-[fadeIn_0.6s_ease-out]"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-brand-green" />
-            {slide.badge}
-          </div>
-
-          <h1
-            key={`title-${slide.id}`}
-            className="text-4xl sm:text-5xl lg:text-6xl font-semibold text-[#F3F6F8] leading-[1.05] tracking-tight mb-4 animate-[fadeIn_0.6s_ease-out]"
-            style={{ fontFamily: "'Space Grotesk', ui-sans-serif, system-ui" }}
-          >
-            {slide.title}
-          </h1>
-
-          <p
-            key={`subtitle-${slide.id}`}
-            className="text-[#93A1AC] text-base sm:text-lg leading-relaxed mb-8 max-w-md animate-[fadeIn_0.6s_ease-out]"
-          >
-            {slide.subtitle}
-          </p>
-
-          <a
-            href={slide.ctaLink}
-            className="inline-flex items-center gap-2.5 bg-brand-green hover:bg-brand-green text-[#04201C] font-semibold px-7 py-3.5 rounded-lg transition-colors text-sm sm:text-base focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2DD4BF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0A0F14]"
-          >
-            {slide.ctaText}
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2.5"
-                d="M14 5l7 7m0 0l-7 7m7-7H3"
-              />
-            </svg>
-          </a>
         </div>
-      </div>
 
-      {/* Arrows */}
-      <button
-        onClick={prevSlide}
-        aria-label="Previous slide"
-        className="hidden sm:flex absolute left-5 top-1/2 -translate-y-1/2 z-30 items-center justify-center w-11 h-11 rounded-full bg-white/5 hover:bg-white/10 text-[#F3F6F8] border border-white/10 backdrop-blur-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2DD4BF]"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 19l-7-7 7-7" />
-        </svg>
-      </button>
-      <button
-        onClick={nextSlide}
-        aria-label="Next slide"
-        className="hidden sm:flex absolute right-5 top-1/2 -translate-y-1/2 z-30 items-center justify-center w-11 h-11 rounded-full bg-white/5 hover:bg-white/10 text-[#F3F6F8] border border-white/10 backdrop-blur-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2DD4BF]"
-      >
-        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </button>
+        {/* Arrow Navigation */}
+        <button
+          onClick={prevSlide}
+          aria-label="Previous slide"
+          className="hidden sm:flex absolute left-5 top-1/2 -translate-y-1/2 z-30 items-center justify-center w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all"
+        >
+          ‹
+        </button>
+        <button
+          onClick={nextSlide}
+          aria-label="Next slide"
+          className="hidden sm:flex absolute right-5 top-1/2 -translate-y-1/2 z-30 items-center justify-center w-11 h-11 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md transition-all"
+        >
+          ›
+        </button>
 
-      {/* Progress indicators + counter */}
-      <div className="absolute bottom-7 left-6 right-6 sm:left-8 sm:right-8 lg:left-12 lg:right-12 z-30 flex items-center gap-4">
-        <div className="flex-1 flex gap-2">
+        {/* Slide Indicators */}
+        <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-30 flex items-center gap-2">
           {slides.map((s, idx) => (
             <button
               key={s.id}
               onClick={() => goTo(idx)}
-              aria-label={`Go to slide ${idx + 1} of ${total}`}
-              aria-current={idx === currentSlide}
-              className="relative h-[3px] flex-1 rounded-full bg-white/15 overflow-hidden max-w-[56px]"
-            >
-              {idx === currentSlide && (
-                <span
-                  className="absolute inset-y-0 left-0 bg-brand-green rounded-full"
-                  style={{
-                    animation:
-                      !paused && !reducedMotion
-                        ? `fillBar ${SLIDE_DURATION}ms linear forwards`
-                        : 'none',
-                    width: paused || reducedMotion ? '100%' : undefined,
-                  }}
-                />
-              )}
-              {idx < currentSlide && (
-                <span className="absolute inset-0 bg-[#2DD4BF]/60 rounded-full" />
-              )}
-            </button>
+              className={`h-2.5 rounded-full transition-all ${
+                idx === currentSlide ? 'w-8 bg-lime-400' : 'w-2.5 bg-white/40'
+              }`}
+            />
           ))}
         </div>
-        <span className="text-[#93A1AC] text-xs font-medium tabular-nums shrink-0">
-          {String(currentSlide + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
-        </span>
-      </div>
 
-      <div className="sr-only" aria-live="polite">
-        {`Slide ${currentSlide + 1} of ${total}: ${slide.title}`}
-      </div>
+        {/* Floating Category Grid (Bottom overlapping card) */}
+        <div className="max-w-7xl mx-auto relative z-40 -mb-40 mt-8">
+          <div className="bg-white rounded-3xl shadow-xl p-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 text-center divide-y sm:divide-y-0 sm:divide-x divide-gray-100">
+            {/* 1 */}
+            <div className="flex flex-col items-center justify-center p-2 group cursor-pointer">
+              <div className="w-14 h-14 rounded-full bg-purple-50 flex items-center justify-center mb-3 group-hover:bg-purple-100 transition-colors">
+                <IoIosPhonePortrait className="text-purple-600 text-2xl" />
+              </div>
+              <h4 className="font-semibold text-gray-900 text-sm">Smartphones</h4>
+              <p className="text-xs text-gray-400 mt-1">Up to 40% Off</p>
+            </div>
 
-      <style>{`
-        @keyframes fillBar {
-          from { width: 0%; }
-          to { width: 100%; }
-        }
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(6px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-      `}</style>
-    </section>
+            {/* 2 */}
+            <div className="flex flex-col items-center justify-center p-2 group cursor-pointer pt-4 sm:pt-2">
+              <div className="w-14 h-14 rounded-full bg-purple-50 flex items-center justify-center mb-3 group-hover:bg-purple-100 transition-colors">
+                <FaHeadphonesAlt className="text-purple-600 text-xl" />
+              </div>
+              <h4 className="font-semibold text-gray-900 text-sm">Headphones</h4>
+              <p className="text-xs text-gray-400 mt-1">Up to 30% Off</p>
+            </div>
+
+            {/* 3 */}
+            <div className="flex flex-col items-center justify-center p-2 group cursor-pointer pt-4 sm:pt-2">
+              <div className="w-14 h-14 rounded-full bg-lime-50 flex items-center justify-center mb-3 group-hover:bg-lime-100 transition-colors">
+                <IoMdWatch className="text-lime-600 text-2xl" />
+              </div>
+              <h4 className="font-semibold text-gray-900 text-sm">Smart Watches</h4>
+              <p className="text-xs text-gray-400 mt-1">Up to 35% Off</p>
+            </div>
+
+            {/* 4 */}
+            <div className="flex flex-col items-center justify-center p-2 group cursor-pointer pt-4 sm:pt-2">
+              <div className="w-14 h-14 rounded-full bg-lime-50 flex items-center justify-center mb-3 group-hover:bg-lime-100 transition-colors">
+                <FaSitemap className="text-lime-600 text-xl" />
+              </div>
+              <h4 className="font-semibold text-gray-900 text-sm">Accessories</h4>
+              <p className="text-xs text-gray-400 mt-1">Up to 20% Off</p>
+            </div>
+
+            {/* 5 */}
+            <div className="flex flex-col items-center justify-center p-2 group cursor-pointer pt-4 sm:pt-2">
+              <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mb-3 group-hover:bg-blue-100 transition-colors">
+                <MdLaptopChromebook className="text-blue-600 text-2xl" />
+              </div>
+              <h4 className="font-semibold text-gray-900 text-sm">Laptops</h4>
+              <p className="text-xs text-gray-400 mt-1">Up to 25% Off</p>
+            </div>
+
+            {/* 6 */}
+            <div className="flex flex-col items-center justify-center p-2 group cursor-pointer pt-4 sm:pt-2">
+              <div className="w-14 h-14 rounded-full bg-blue-50 flex items-center justify-center mb-3 group-hover:bg-blue-100 transition-colors">
+                <FaCamera className="text-blue-600 text-xl" />
+              </div>
+              <h4 className="font-semibold text-gray-900 text-sm">Cameras</h4>
+              <p className="text-xs text-gray-400 mt-1">Up to 30% Off</p>
+            </div>
+          </div>
+        </div>
+
+        <style>{`
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `}</style>
+      </section>
+
+      {/* Space compensation for bottom category section overlap */}
+      <div className="h-24" />
+    </div>
   );
 };
 
