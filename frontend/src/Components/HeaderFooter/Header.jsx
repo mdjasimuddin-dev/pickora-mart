@@ -39,7 +39,7 @@ const Header = () => {
 
       {/* 2. Main Search & Action Header */}
       <div className="bg-white border-b border-gray-100 sticky top-0 z-40 shadow-sm">
-        <div className="max-w-5/6 mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 gap-4 md:gap-8">
             {/* Logo */}
             <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
@@ -187,7 +187,7 @@ const Header = () => {
 
         {/* 3. Bottom Navigation Links (Desktop) */}
         <div className="hidden md:block border-t border-gray-100 bg-white">
-          <div className="max-w-5/6 mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-semibold uppercase tracking-wider">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between text-xs font-semibold uppercase tracking-wider">
             {/* All Categories Dropdown Button */}
             <button className="flex items-center gap-2 bg-brand-purple text-white px-5 py-3 rounded-t-lg hover:bg-purple-900 transition-colors">
               <svg
