@@ -9,3 +9,10 @@
   --font-montserrat: 'Montserrat', sans-serif;
   --font-bangla: 'Hind Siliguri', sans-serif;
 }
+
+/* style.css ba index.css-e thakbe */
+li a.active {
+  color: #67a902;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #67a902;
+}
