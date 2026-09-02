@@ -1,10 +1,22 @@
 import { useState } from 'react';
 import logo from './../../assets/pickora-mart.png';
+import { NavLink } from 'react-router';
+import useAuth from '../../Hooks/useAuth';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [cartCount, setCartCount] = useState(2);
   const [wishlistCount, setWishlistCount] = useState(5);
+  const { user } = useAuth();
+
+  const navItems = [
+    { name: 'Home', path: '/' },
+    { name: 'Shop', path: '/shop' },
+    { name: 'Flash Sale', path: '/flash-sale' },
+    { name: 'New Arrive', path: '/new-arrive' },
+    { name: 'Best Seller', path: '/best-seller' },
+    { name: 'Brand', path: '/brand' },
+  ];
 
   return (
     <header className="w-full font-inter">
@@ -42,9 +54,9 @@ const Header = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20 gap-4 md:gap-8">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
+            <a href="/" className="flex items-center gap-2.5 flex-shrink-0">
               <div>
-                <img src={logo} alt="" width={280} />
+                <img src={logo} alt="" className="w-36 md:w-52" />
               </div>
             </a>
 
@@ -97,12 +109,17 @@ const Header = () => {
                     />
                   </svg>
                 </div>
-                <div className="text-left hidden lg:block">
-                  <p className="text-[11px] text-gray-400 font-medium leading-none">
-                    Hello, Sign In
-                  </p>
-                  <p className="text-xs font-bold text-gray-800 mt-1">My Account</p>
-                </div>
+                {user && (
+                  <div className="text-left hidden lg:block">
+                    <p className="text-[11px] text-gray-400 font-medium leading-none">
+                      Hello,{' '}
+                      {user?.displayName ? user.displayName.split(' ')[1] : 'Username not update'}
+                    </p>
+                    <p className="text-xs font-bold text-gray-800 mt-1">My Account</p>
+                  </div>
+                )}
+
+                {!user && <NavLink to="http://localhost:5173/login">Login</NavLink>}
               </a>
 
               {/* Wishlist */}
@@ -221,28 +238,13 @@ const Header = () => {
 
             {/* Navigation Category Links */}
             <nav className="flex items-center space-x-8 text-gray-700">
-              <a href="#home" className="hover:text-brand-purple transition-colors py-3">
-                Home
-              </a>
-              <a href="#shop" className="hover:text-brand-purple transition-colors py-3">
-                Shop
-              </a>
-              <a
-                href="#flash-deals"
-                className="text-red-600 hover:text-red-700 transition-colors py-3 flex items-center gap-1"
-              >
-                <span className="w-2 h-2 rounded-full bg-red-600 animate-pulse"></span>
-                Flash Sale
-              </a>
-              <a href="#new" className="hover:text-brand-purple transition-colors py-3">
-                New Arrivals
-              </a>
-              <a href="#best" className="hover:text-brand-purple transition-colors py-3">
-                Best Sellers
-              </a>
-              <a href="#brands" className="hover:text-brand-purple transition-colors py-3">
-                Brands
-              </a>
+              {navItems.map((item, index) => (
+                <ul key={index}>
+                  <li>
+                    <NavLink to={item.path}>{item.name}</NavLink>
+                  </li>
+                </ul>
+              ))}
             </nav>
 
             {/* Special Promo Link */}
