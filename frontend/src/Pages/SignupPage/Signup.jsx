@@ -3,30 +3,70 @@ import { FcGoogle } from 'react-icons/fc';
 import { FaFacebook, FaGithub, FaLock, FaEnvelope, FaUser } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { useNavigate, Link } from 'react-router';
+import axios from 'axios';
+
 import useAuth from './../../Hooks/useAuth';
+
+import { FacebookAuthProvider, getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
 
 export default function Signup() {
   const [formData, setFormData] = useState({ email: '', password: '', name: '' });
   const navigate = useNavigate();
   const { userCreate, userProfileUpdate } = useAuth();
 
+  const auth = getAuth();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await userCreate(formData.email, formData.password)
-      .then(() => {
-        userProfileUpdate(formData.name);
-        Swal.fire({
-          title: 'Successful',
-          text: 'User Create successful.',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log(err);
+
+    try {
+      // 1. user create
+      await userCreate(formData.email, formData.password);
+
+      // 02. user update
+      await userProfileUpdate(formData.name);
+
+      const reqData = {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      };
+
+      // 03. user data store into db
+      await axios.post('http://localhost:5000/api/auth/signup', reqData, { withCredentials: true });
+
+      // after login successfully then show successfully popup alert
+      Swal.fire({
+        title: 'Successful',
+        text: 'User Create successful.',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1500,
       });
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  // google authentication
+  const googleProvider = new GoogleAuthProvider();
+
+  const handleGoogleLogin = () => {
+    signInWithPopup(auth, googleProvider).then((res) => {
+      const user = res.user;
+      console.log('User Login Info :', user);
+    });
+  };
+
+  // facebook login
+  const facebookProvider = new FacebookAuthProvider();
+
+  const handleFacebookProvider = () => {
+    signInWithPopup(auth, facebookProvider).then((res) => {
+      const user = res.user;
+      console.log('User Login Info :', user);
+    });
   };
 
   return (
@@ -127,12 +167,16 @@ export default function Signup() {
         <div className="grid grid-cols-3 gap-3">
           <button
             type="button"
+            onClick={() => handleGoogleLogin()}
             className="flex items-center justify-center py-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-2xl"
           >
             <FcGoogle className="text-xl" />
           </button>
           <button
             type="button"
+            onClick={() => {
+              handleFacebookProvider();
+            }}
             className="flex items-center justify-center py-3 bg-slate-50 hover:bg-slate-100 border border-slate-200 rounded-2xl"
           >
             <FaFacebook className="text-xl text-blue-600" />

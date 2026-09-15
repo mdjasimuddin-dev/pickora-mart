@@ -47,17 +47,17 @@ const AuthProvider = ({ children }) => {
       setUser(currentUser);
       console.log('Currrent User', currentUser);
 
-      if (currentUser) {
-        const userEmail = { email: currentUser.email };
-        axios.post('http://localhost:5000/api/auth/signup', userEmail).then((res) => {
-          // console.log(res.data)
-          if (res.data.token) {
-            localStorage.setItem('access-token', res.data.token);
-          }
-        });
-      } else {
-        localStorage.removeItem('access-token');
-      }
+      // if (currentUser) {
+      //   const userEmail = { email: currentUser.email };
+      //   axios.post('http://localhost:5000/api/auth/signup', userEmail).then((res) => {
+      //     // console.log(res.data)
+      //     if (res.data.token) {
+      //       localStorage.setItem('access-token', res.data.token);
+      //     }
+      //   });
+      // } else {
+      //   localStorage.removeItem('access-token');
+      // }
       setLoading(false);
     });
 

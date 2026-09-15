@@ -13,7 +13,12 @@ app.use(express.text());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
-// app.use(cors(corsOptions));
+const corsOptions = {
+  origin: 'http://localhost:5173',
+  credentials: true,
+};
+
+app.use(cors(corsOptions));
 
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({

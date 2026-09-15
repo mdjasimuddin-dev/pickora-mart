@@ -22,7 +22,7 @@ export const connectDB = async () => {
     `);
 
     await pool.query(`
-      CREATE TABLE IF NOT EXISTS issues(
+      CREATE TABLE IF NOT EXISTS orders(
       id SERIAL PRIMARY KEY,
       title TEXT NOT NULL,
       description TEXT NOT NULL,
