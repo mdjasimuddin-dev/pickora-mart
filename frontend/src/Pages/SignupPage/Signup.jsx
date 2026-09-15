@@ -45,7 +45,15 @@ export default function Signup() {
       });
       navigate('/');
     } catch (error) {
-      console.log(error);
+      console.log('Full Error:', error);
+      // Backend er asol error message dekhar jonno eta use korun:
+      console.error('Backend Response Error:', error.response?.data);
+
+      Swal.fire({
+        title: 'Error!',
+        text: error.response?.data?.message || error.message || 'Something went wrong!',
+        icon: 'error',
+      });
     }
   };
 
