@@ -49,7 +49,7 @@ const AuthProvider = ({ children }) => {
 
       if (currentUser) {
         const userEmail = { email: currentUser.email };
-        axios.post('http://localhost:5000/api/auth/createToken', userEmail).then((res) => {
+        axios.post('http://localhost:5000/api/auth/signup', userEmail).then((res) => {
           // console.log(res.data)
           if (res.data.token) {
             localStorage.setItem('access-token', res.data.token);

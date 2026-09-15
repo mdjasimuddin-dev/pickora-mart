@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import logo from './../../assets/pickora-mart.png';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import useAuth from '../../Hooks/useAuth';
 
 const Header = () => {
@@ -115,7 +115,9 @@ const Header = () => {
                       Hello,{' '}
                       {user?.displayName ? user.displayName.split(' ')[1] : 'Username not update'}
                     </p>
-                    <p className="text-xs font-bold text-gray-800 mt-1">My Account</p>
+                    <Link to="admin/overview" className="text-xs font-bold text-gray-800 mt-1">
+                      My Account
+                    </Link>
                   </div>
                 )}
 

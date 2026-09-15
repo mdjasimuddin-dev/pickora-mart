@@ -5,6 +5,16 @@ import HomePage from '../Pages/HomePage/HomePage';
 import Login from '../Pages/LoginPage/Login';
 import Dashboard from '../Pages/Dashboard/Dashboard';
 
+// =================== Admin Route ========================
+import AdminOverview from '../Pages/Dashboard/Admin/Overview';
+import AdminProducts from '../Pages/Dashboard/Admin/Products';
+import AdminOrders from '../Pages/Dashboard/Admin/Orders';
+import Users from '../Pages/Dashboard/Admin/Users';
+import Analytics from '../Pages/Dashboard/Admin/Analytics';
+import AdminUsers from '../Pages/Dashboard/Admin/Users';
+import AdminAnalytics from '../Pages/Dashboard/Admin/Analytics';
+import Signup from '../Pages/SignupPage/Signup';
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -20,11 +30,37 @@ const router = createBrowserRouter([
         path: '/login',
         element: <Login />,
       },
+      {
+        path: '/signup',
+        element: <Signup />,
+      },
     ],
   },
   {
-    path: '/dashboard',
+    path: '/admin',
     element: <Dashboard />,
+    children: [
+      {
+        path: 'overview',
+        element: <AdminOverview />,
+      },
+      {
+        path: 'products',
+        element: <AdminProducts />,
+      },
+      {
+        path: 'orders',
+        element: <AdminOrders />,
+      },
+      {
+        path: 'users',
+        element: <AdminUsers />,
+      },
+      {
+        path: 'analytics',
+        element: <AdminAnalytics />,
+      },
+    ],
   },
 ]);
 

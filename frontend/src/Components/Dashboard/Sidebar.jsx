@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { NavLink } from 'react-router';
 import {
   LayoutDashboard,
@@ -13,11 +13,11 @@ import {
   X,
 } from 'lucide-react';
 
-export default function Sidebar({ role = 'user' }) {
+export default function Sidebar({ role = 'admin' }) {
   const [isOpen, setIsOpen] = useState(false);
 
   const adminLinks = [
-    { name: 'Dashboard', path: '/admin/dashboard', icon: LayoutDashboard },
+    { name: 'Overview', path: '/admin/overview', icon: LayoutDashboard },
     { name: 'Products', path: '/admin/products', icon: Package },
     { name: 'Orders', path: '/admin/orders', icon: ShoppingCart },
     { name: 'Users', path: '/admin/users', icon: Users },
