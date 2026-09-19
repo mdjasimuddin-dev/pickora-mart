@@ -33,7 +33,10 @@ export default function Signup() {
       };
 
       // 03. user data store into db
-      await axios.post('http://localhost:5000/api/auth/signup', reqData, { withCredentials: true });
+      const data = await axios.post('http://localhost:5000/api/auth/signup', reqData, {
+        withCredentials: true,
+      });
+      console.log('user create token check:', data.data);
 
       // after login successfully then show successfully popup alert
       Swal.fire({

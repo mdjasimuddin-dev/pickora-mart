@@ -4,6 +4,7 @@ import { FaFacebook, FaGithub, FaLock, FaEnvelope } from 'react-icons/fa';
 import Swal from 'sweetalert2';
 import { useNavigate, Link } from 'react-router';
 import useAuth from './../../Hooks/useAuth';
+import axios from 'axios';
 
 export default function Login() {
   const [formData, setFormData] = useState({ email: '', password: '' });
@@ -12,20 +13,32 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await userLogin(formData.email, formData.password)
-      .then(() => {
-        Swal.fire({
-          title: 'Successful',
-          text: 'User login successful.',
-          icon: 'success',
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        navigate('/');
-      })
-      .catch((err) => {
-        console.log(err);
+    await userLogin(formData.email, formData.password);
+
+    const reqBody = {
+      email: formData.email,
+      password: formData.password,
+    };
+
+    try {
+      const res = await axios.post('http://localhost:5000/api/auth/login', reqBody, {
+        withCredentials: true,
       });
+
+      console.log('login Data', res.data.data);
+      localStorage.setItem('role', res.data.data.user.role);
+
+      Swal.fire({
+        title: 'Successful',
+        text: 'User login successful.',
+        icon: 'success',
+        showConfirmButton: false,
+        timer: 1500,
+      });
+      navigate('/');
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (

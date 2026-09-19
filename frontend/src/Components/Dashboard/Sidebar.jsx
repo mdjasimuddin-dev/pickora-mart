@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 import {
   LayoutDashboard,
@@ -13,7 +13,26 @@ import {
   X,
 } from 'lucide-react';
 
-export default function Sidebar({ role = 'admin' }) {
+export default function Sidebar({ role }) {
+  // const userRole = localStorage.getItem('role');
+
+  useEffect(() => {
+    fetch('http://localhost:5000/api/auth/login', {
+      headers: {
+        Authorization: `${localStorage.getItem('access_token')}`,
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setUser(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error('Error fetching user:', err);
+        setLoading(false);
+      });
+  }, []);
+
   const [isOpen, setIsOpen] = useState(false);
 
   const adminLinks = [

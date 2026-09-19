@@ -13,7 +13,7 @@ export const connectDB = async () => {
     name VARCHAR(50),
     email VARCHAR(50) UNIQUE NOT NULL,
     password TEXT NOT NULL,
-    role VARCHAR(20) DEFAULT 'contributor',
+    role VARCHAR(20) DEFAULT 'user',
 
     created_at TIMESTAMP DEFAULT NOW(),
     updated_at TIMESTAMP DEFAULT NOW()
