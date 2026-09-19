@@ -9,11 +9,13 @@ import Dashboard from '../Pages/Dashboard/Dashboard';
 import AdminOverview from '../Pages/Dashboard/Admin/Overview';
 import AdminProducts from '../Pages/Dashboard/Admin/Products';
 import AdminOrders from '../Pages/Dashboard/Admin/Orders';
-import Users from '../Pages/Dashboard/Admin/Users';
-import Analytics from '../Pages/Dashboard/Admin/Analytics';
 import AdminUsers from '../Pages/Dashboard/Admin/Users';
 import AdminAnalytics from '../Pages/Dashboard/Admin/Analytics';
 import Signup from '../Pages/SignupPage/Signup';
+import UserOverview from '../Pages/Dashboard/User/UserOverview';
+import MyOrders from '../Pages/Dashboard/User/MyOrders';
+import Wishlist from '../Pages/Dashboard/User/Wishlist';
+import UserProfileSettings from '../Pages/Dashboard/User/Profiles';
 
 const router = createBrowserRouter([
   {
@@ -55,6 +57,32 @@ const router = createBrowserRouter([
       {
         path: 'users',
         element: <AdminUsers />,
+      },
+      {
+        path: 'analytics',
+        element: <AdminAnalytics />,
+      },
+    ],
+  },
+  {
+    path: '/user',
+    element: <Dashboard />,
+    children: [
+      {
+        path: 'overview',
+        element: <UserOverview />,
+      },
+      {
+        path: 'orders',
+        element: <MyOrders />,
+      },
+      {
+        path: 'wishlist',
+        element: <Wishlist />,
+      },
+      {
+        path: 'profile',
+        element: <UserProfileSettings />,
       },
       {
         path: 'analytics',

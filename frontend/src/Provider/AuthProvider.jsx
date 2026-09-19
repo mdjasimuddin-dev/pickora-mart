@@ -7,7 +7,6 @@ import {
   updateProfile,
 } from 'firebase/auth';
 import { auth } from '../Firebase/firebase.config';
-import axios from 'axios';
 import { AuthContext } from '../Context/AuthContext';
 
 const AuthProvider = ({ children }) => {

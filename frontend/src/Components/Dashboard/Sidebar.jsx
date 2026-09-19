@@ -44,7 +44,7 @@ export default function Sidebar({ role }) {
   ];
 
   const userLinks = [
-    { name: 'Overview', path: '/user/dashboard', icon: LayoutDashboard },
+    { name: 'Overview', path: '/user/overview', icon: LayoutDashboard },
     { name: 'My Orders', path: '/user/orders', icon: ShoppingCart },
     { name: 'Wishlist', path: '/user/wishlist', icon: Heart },
     { name: 'Profile Settings', path: '/user/profile', icon: User },
