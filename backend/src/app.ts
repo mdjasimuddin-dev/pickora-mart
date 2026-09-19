@@ -8,11 +8,6 @@ import { productRoute } from './modules/product/product.route';
 
 const app = express();
 
-app.use(express.json());
-app.use(express.text());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
-
 const corsOptions = {
   origin: [
     'http://localhost:5173',
@@ -25,6 +20,11 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+
+app.use(express.json());
+app.use(express.text());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 app.get('/', (req: Request, res: Response) => {
   res.status(200).json({
