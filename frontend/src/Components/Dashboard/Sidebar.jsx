@@ -17,7 +17,7 @@ export default function Sidebar({ role }) {
   // const userRole = localStorage.getItem('role');
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/auth/login', {
+    fetch('https://pickora-mart-47s4.vercel.app/api/auth/login', {
       headers: {
         Authorization: `${localStorage.getItem('access_token')}`,
       },

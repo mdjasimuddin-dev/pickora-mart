@@ -21,7 +21,7 @@ export default function Login() {
     };
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', reqBody, {
+      const res = await axios.post('https://pickora-mart-47s4.vercel.app/api/auth/login', reqBody, {
         withCredentials: true,
       });
 
