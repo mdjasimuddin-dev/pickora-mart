@@ -14,9 +14,14 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 const corsOptions = {
-  origin: ['http://localhost:5173', 'https://pickora-mart.vercel.app'],
-
+  origin: [
+    'http://localhost:5173',
+    'https://pickora-mart.vercel.app',
+    'https://pickora-mart-47s4.vercel.app', // আপনার ভেরসেল ড্যাশবোর্ডের আসল URL টা এখানে যুক্ত করুন
+  ],
   credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
 };
 
 app.use(cors(corsOptions));
