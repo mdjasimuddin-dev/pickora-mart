@@ -137,7 +137,7 @@ const Header = () => {
                   </div>
                 )}
 
-                {!user && <NavLink to="http://localhost:5173/login">Login</NavLink>}
+                {!user && <NavLink to="/login">Login</NavLink>}
               </a>
 
               {/* Wishlist */}
